@@ -22,8 +22,7 @@ const userSchema = new Schema(
             required: [true, "Please provide an email"]
         },
         mobile: {
-            type: Number,
-
+            type: String,
         },
         posts: [
             {
@@ -37,4 +36,5 @@ const userSchema = new Schema(
     }
 )
 
-export const User = mongoose.model("User", userSchema);  
+const User = mongoose.models.users || mongoose.model("User", userSchema);  
+export default User;
