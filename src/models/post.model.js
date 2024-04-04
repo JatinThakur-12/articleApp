@@ -6,14 +6,18 @@ const postSchema = new mongoose.Schema(
             type: String,
             unique: true,
             trim: true,
+            index: true,
+            required: true,
         },
         title: {
             type: String,
             required: [true,"provide title for post"],
-            trim: true
+            trim: true,
+            required: true,
         },
         desc: String,
         category: String,
+        image: String,
         author: {
             type: Schema.Types.ObjectId,
             ref: 'User'
