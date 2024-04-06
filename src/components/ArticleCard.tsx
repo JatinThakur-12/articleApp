@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function ArticleCard({ postData }: any) {
 
-  const desc = postData.desc;
+  const desc = postData?.desc;
 
   const formatDate = (inputDate:any) => {
     const date = new Date(inputDate);
@@ -39,7 +39,7 @@ function ArticleCard({ postData }: any) {
             /> */}
             
             <div className="capitalize">
-              <h1 aria-label="author">{postData.author.name}</h1>
+              <h1 aria-label="author">{postData?.author?.name}</h1>
             </div>
           </div>
           <div className="py-2 flex flex-col gap-y-1">
@@ -53,7 +53,7 @@ function ArticleCard({ postData }: any) {
           </div>
           <div className="flex  align-baseline justify-between">
             <div className="flex items-center text-xs whitespace-nowrap font-normal tracking-tighter text-white">
-              <div>{formatDate(postData.createdAt)}</div>
+              <div>{formatDate(postData?.createdAt)}</div>
               <div className="px-1">
                 <span className="relative top-[-0.2rem]">.</span>
               </div>

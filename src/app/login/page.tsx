@@ -24,8 +24,10 @@ export default function page() {
       const response = await axios.post("/api/login", user);
 
       console.log("Login success", response.data);
+      console.log(response.data.data);
+      
 
-      dispatch(login())
+      dispatch(login(response.data.data))
 
       router.push("/home");
     } catch (error: any) {

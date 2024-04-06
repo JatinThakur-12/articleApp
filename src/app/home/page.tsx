@@ -22,25 +22,22 @@ function page() {
       const response = await axios.get('/api/allpost');
       const resData = response.data;
       console.log(resData);
-      dispatch(addPosts(resData.data))
       setPosts(resData.data);
       setPageLength(resData.pages);
-
+      dispatch(addPosts(resData.data));
     } catch (error: any) {
-
       setError(true);
       toast("Error:",error);
       setTimeout(() => {
         setError(false);
       }, 4000);
-
     }
   }
+  
   
 
   useEffect(() => {
     fetchAllPost()
-
   }, [])
   
   return (

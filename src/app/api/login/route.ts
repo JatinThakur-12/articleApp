@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
 
         const response = NextResponse.json({
             message: "User logged in successfully",
+            data: {_id:user._id},
             success: true
         });
 

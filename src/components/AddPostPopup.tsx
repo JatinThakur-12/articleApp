@@ -45,7 +45,7 @@ function AddPostPopup({ post }: any) {
   const handleClick = useCallback(() => {
     alert(rte.getHTMLCode());
     setEditorHtml(rte.getHTMLCode())
-  },[open])
+  },[])
 
   const dispatch = useDispatch();
 
@@ -166,7 +166,7 @@ function AddPostPopup({ post }: any) {
                 </label>
                 {/* <RichTextEditor/> */}
 
-                <div ref={refDiv} className="max-w-[600px]"></div>
+                <div ref={refDiv} onChange={handleClick } className="max-w-[600px]"></div>
               </div>
 
               <div className="w-full flex flex-col mt-2 items-start">

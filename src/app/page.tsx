@@ -16,16 +16,16 @@ export default function Home() {
 
   let rte:any;
 
-  useEffect(() => {
-      rte = new window.RichTextEditor(refDiv.current);
-      rte.setHTMLCode("Apple banana");
+  // useEffect(() => {
+  //     rte = new window.RichTextEditor(refDiv.current);
+  //     rte.setHTMLCode("Apple banana");
 
-  }, [])
+  // }, [refDiv])
 
-  const handleClick = ()=>{
-    alert(rte.getHTMLCode())
-    console.log(rte.getHTMLCode())
-  }
+  // const handleClick = ()=>{
+  //   alert(rte.getHTMLCode())
+  //   console.log(rte.getHTMLCode())
+  // }
 
   return (
     <main className="flex min-h-screen flex-col items-center  p-24">
@@ -37,7 +37,7 @@ export default function Home() {
           
         </div>
       </div>
-      <button className="p-3 bg-cyan-300 " onClick={handleClick}>Get html text</button>
+      {/* <button className="p-3 bg-cyan-300 " onClick={handleClick}>Get html text</button> */}
     </main>
   );
 }
