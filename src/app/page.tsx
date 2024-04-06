@@ -1,5 +1,9 @@
 'use client'
+import LoginLink from "@/components/ui/LoginLink";
+import SignUpLink from "@/components/ui/SignUpLink";
 import { useEffect, useRef } from "react";
+
+
 
 declare global {
   interface Window {
@@ -9,11 +13,13 @@ declare global {
 
 export default function Home() {
   const refDiv = useRef(null);
+
   let rte:any;
 
   useEffect(() => {
-    rte = new window.RichTextEditor(refDiv.current);
-    rte.setHTMLCode("Apple banana");
+      rte = new window.RichTextEditor(refDiv.current);
+      rte.setHTMLCode("Apple banana");
+
   }, [])
 
   const handleClick = ()=>{
@@ -24,6 +30,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center  p-24">
       <div className="w-full flex justify-center items-center">
+        <LoginLink/>
+        <SignUpLink/>
+        
         <div ref={refDiv} className="max-w-[600px]">
           
         </div>
