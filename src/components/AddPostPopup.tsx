@@ -1,12 +1,10 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "@/app/globals.css";
 import { closePopUp } from "@/lib/features/addPost/addPostSlice";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/lib/store";
 import axios from 'axios'
-import Link from "next/link";
-import { useForm } from "react-hook-form";
 
 declare global {
   interface Window {

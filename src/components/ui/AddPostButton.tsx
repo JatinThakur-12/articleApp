@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { openPopUp } from "@/lib/features/addPost/addPostSlice";
 import { useDispatch } from "react-redux";

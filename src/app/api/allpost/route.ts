@@ -1,10 +1,7 @@
 import { connect } from "@/db/dbConfig";
 import Post from "@/models/post.model"
-import User, { userSchema } from "@/models/user.model";
 import { getUserDataFromToken } from "@/utils/getUserDataFromToken";
 import { NextRequest, NextResponse } from "next/server"
-import mongoose, { Types } from "mongoose";
-import { log } from "console";
 
 connect()
 
@@ -59,7 +56,7 @@ export async function GET(req: NextRequest) {
                 .sort({ createdAt: -1 })
                 .skip((obj.page - 1) * obj.limit)
                 .limit(obj.limit).populate('author', ['name', '_id']).exec();
-                
+
             allPostLength = await (await Post.find({ author: userId })).length;
 
         }

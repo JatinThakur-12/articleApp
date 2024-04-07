@@ -11,11 +11,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "next/navigation";
 
-import { useAppSelector } from "@/lib/store";
-
-import AddPostButton from "@/components/ui/AddPostButton";
-
-function page() {
+export default function page() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(false);
   const [pageLength, setPageLength] = useState(0);
@@ -82,4 +78,4 @@ function page() {
   );
 }
 
-export default page;
+
