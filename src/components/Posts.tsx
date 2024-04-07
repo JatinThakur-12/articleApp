@@ -9,7 +9,7 @@ function Posts({data}:any) {
       {
         data &&
         data.map((value:any)=>(
-          <div key={value._id}>
+          <div className='w-full' key={value._id} >
             <ArticleCard postData={value}/>
           </div>
         ))

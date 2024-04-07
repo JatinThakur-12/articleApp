@@ -7,7 +7,6 @@ import { useAppSelector } from "@/lib/store";
 import axios from 'axios'
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import RichTextEditor from "./RichTextEditor";
 
 declare global {
   interface Window {
@@ -33,19 +32,35 @@ function AddPostPopup({ post }: any) {
   const [editorHtml, setEditorHtml] = useState(postData.desc);
 
   const refDiv = useRef(null);
+  const initializeClick = useRef(null);
   let rte: any;
+
+  // const handleClick = () => {
+  //   if(open){
+  //     alert(rte.getHTMLCode());
+  //     setEditorHtml(rte.getHTMLCode())
+      
+  //   }
+  // }
 
   useEffect(() => {
     if(open){
       rte = new window.RichTextEditor(refDiv.current);
-      rte.setHTMLCode(editorHtml);
+      rte.setHTMLCode("<b>editorHtml</b>");
+      // console.log("Hogaya"+rte.getHTMLCode())
+      const handleClick = () =>{
+        console.log("initialized");
+        return rte.getHTMLCode();
+      }
+
+      initializeClick.current = handleClick();
+
     }
   }, [open]);
 
-  const handleClick = useCallback(() => {
-    alert(rte.getHTMLCode());
-    setEditorHtml(rte.getHTMLCode())
-  },[])
+  
+
+  
 
   const dispatch = useDispatch();
 
@@ -64,11 +79,10 @@ function AddPostPopup({ post }: any) {
 
   const handleSubmit = async () => {
     try {
-      await handleClick()
+      // await handleClick()
       const response = await axios.post("/api/post");
       console.log(response);
       handleClose()
-
     } catch (error) {
       console.log(error)
     }
@@ -166,7 +180,7 @@ function AddPostPopup({ post }: any) {
                 </label>
                 {/* <RichTextEditor/> */}
 
-                <div ref={refDiv} onChange={handleClick } className="max-w-[600px]"></div>
+                <div ref={refDiv}  className="max-w-[600px]"></div>
               </div>
 
               <div className="w-full flex flex-col mt-2 items-start">
@@ -191,10 +205,9 @@ function AddPostPopup({ post }: any) {
                   />
                 </div>
               </div>
-
             </div>
             
-            <button className="m-3 px-4 bg-green-500 rounded-md" disabled={buttonDisabled} onClick={handleClick}>Submit</button>
+            <button className="m-3 px-4 bg-green-500 rounded-md" disabled={buttonDisabled} onClick={()=>initializeClick}>Submit</button>
 
 
           </div>

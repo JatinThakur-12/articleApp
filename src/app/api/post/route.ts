@@ -1,5 +1,6 @@
 import { connect } from "@/db/dbConfig";
 import Post from "@/models/post.model"
+import User from "@/models/user.model";
 import { getUserDataFromToken } from "@/utils/getUserDataFromToken";
 import { NextRequest, NextResponse } from "next/server"
 
@@ -52,7 +53,9 @@ export async function GET(req: NextRequest) {
         }
         console.log("abcd");
 
+        // const postData = await Post.findOne({slug}).populate('author',['name','_id']);
         const postData = await Post.findOne({slug});
+        postData.author = await User.findById(postData.author).select("_id, name")
 
         if(!postData){
             return NextResponse.json({error: "Requested post does not exist"},{status: 400});
@@ -70,11 +73,11 @@ export async function GET(req: NextRequest) {
 // request for deleting a particular post
 export async function DELETE(req: NextRequest) {
     try {
-        const reqBody = await req.json();
-        const {slug} = reqBody;
+        const searchParams = req.nextUrl.searchParams
+        const slug = searchParams.get('slug');
         const userId = await getUserDataFromToken(req);
 
-        if(slug.trim()===""){
+        if(slug?.trim()===""){
             return NextResponse.json({error: "Invalid input"},{status: 400});
         }
 

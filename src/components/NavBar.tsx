@@ -6,6 +6,7 @@ import { useAppSelector } from "@/lib/store";
 import { useDispatch } from "react-redux";
 import { login, logout } from "@/lib/features/authStore/authSlice";
 import axios from 'axios'
+import Link from "next/link";
 
 
 function NavBar() {
@@ -38,14 +39,14 @@ function NavBar() {
       <header
         className={`shadow flex box-border border-b-[1.5px] transition-all justify-between w-full px-4 py-4`}
       >
-        <div className="text-2xl font-semibold">Artically</div>
+        <div className="text-2xl font-semibold"><Link href ="/home">Artically</Link></div>
 
-        {{} && (
+        {auth? (
           <div className="flex">
             <AddPostButton />
             <LogoutButton />
           </div>
-        )}
+        ):""}
       </header>
     </>
   );

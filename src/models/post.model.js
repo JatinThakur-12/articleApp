@@ -13,7 +13,6 @@ const postSchema = new mongoose.Schema(
             type: String,
             required: [true,"provide title for post"],
             trim: true,
-            required: true,
         },
         desc: String,
         category: String,
