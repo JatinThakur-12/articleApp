@@ -11,7 +11,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "next/navigation";
 
-export default function page() {
+export default function Page() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(false);
   const [pageLength, setPageLength] = useState(0);

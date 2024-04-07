@@ -22,7 +22,7 @@ interface Post {
   // Add other properties of the post if needed
 }
 
-export default function page({ params }: any) {
+export default function Page({ params }: any) {
   const router = useRouter();
   const slug = params.slug;
   const [post, setPost] = useState<Post | null>(null);

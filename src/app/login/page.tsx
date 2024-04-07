@@ -6,7 +6,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "@/lib/features/authStore/authSlice";
 
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const dispatch = useDispatch();
 
